@@ -1,0 +1,14 @@
+.error {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin: 10px 0 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bolder;
+  }
