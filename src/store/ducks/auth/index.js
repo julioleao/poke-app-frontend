@@ -1,8 +1,8 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-  isAuthenticated: localStorage.getItem('email'),
-  isAdmin: /* localStorage.getItem('isAdmin') */ true,
+  isAuthenticated: localStorage.getItem('name'),
+  isAdmin: localStorage.getItem('isAdmin'),
   user: {},
 };
 

@@ -29,8 +29,14 @@ export const addCardFetch = (card) => {
   return (dispatch) => {
     api
       .post('/cards', card)
-      .then((res) => dispatch(addCard(res.data)))
-      .catch(console.log);
+      .then((res) => {
+        dispatch(addCard(res.data));
+        dispatch(addMessage('Carta inserida com sucesso!'));
+        window.location.reload();
+      })
+      .catch((e) => {
+        e.response.data.errors.forEach((e) => dispatch(addMessage(e)));
+      });
   };
 };
 
@@ -39,7 +45,7 @@ export const authLogin = (user) => {
     api
       .post('/login', user)
       .then((res) => {
-        localStorage.setItem('email', res.data.email);
+        localStorage.setItem('name', res.data.name);
         localStorage.setItem('isAdmin', res.data.isAdmin);
         dispatch(login(res.data));
         res.data.isAdmin
@@ -57,11 +63,12 @@ export const authRegister = (user) => {
     api
       .post('/register', user)
       .then((res) => {
-        localStorage.setItem('email', res.data.email);
+        localStorage.setItem('name', res.data.name);
         dispatch(register());
         window.location.pathname = '/list';
       })
       .catch((e) => {
+        console.log(e.response.data);
         e.response.data.errors.forEach((e) => dispatch(addMessage(e)));
       });
   };

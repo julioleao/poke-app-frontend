@@ -63,7 +63,7 @@ export default function Header() {
       </ul>
       <ul className='navbar-nav ml-md-auto'>
         {isAuthenticated ? (
-          <h5>Bem vindo!</h5>
+          <h5>Bem vindo {isAuthenticated}</h5>
         ) : (
           <NavLink
             to='/register'
