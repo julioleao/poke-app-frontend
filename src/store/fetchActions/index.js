@@ -15,10 +15,8 @@ export const getAllCards = () => {
 export const getCard = (name) => {
   return (dispatch) => {
     api
-      .get(`/cards/search?name=${name}`, {
-        params: {
-          card: name,
-        },
+      .post(`/cards/search`, {
+        name: name,
       })
       .then((res) => dispatch(addCards(res.data)))
       .catch(console.log);
